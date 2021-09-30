@@ -33,6 +33,7 @@ public class UserController {
         return new ResponseEntity(new StandardResponse("200", "Done", allUsers), HttpStatus.OK);
     }
 
+
     @GetMapping(path = "/login")
     public ResponseEntity loginUser(@RequestParam String email, @RequestParam String password) {
         UserResponseDTO userResponseDTO = userService.matchesEmail(email, password);

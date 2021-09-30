@@ -22,6 +22,6 @@ public class User {
     private String contact;
     private String userType;
     private String password;
-
+//xxx
 
 }

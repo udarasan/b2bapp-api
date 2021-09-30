@@ -15,4 +15,5 @@ public class B2bappApiApplication {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
 }

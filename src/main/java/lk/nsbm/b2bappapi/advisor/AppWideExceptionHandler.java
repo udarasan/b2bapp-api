@@ -6,8 +6,12 @@ import lk.nsbm.b2bappapi.exception.ValidateException;
 import lk.nsbm.b2bappapi.util.StandardResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+@CrossOrigin
+@RestControllerAdvice
 public class AppWideExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity handleException(Exception e) {

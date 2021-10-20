@@ -12,12 +12,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @RestController
 @RequestMapping("api/v1/product")
 public class ProductController {
+
     @Autowired
     private ProductService productService;
 
@@ -25,6 +29,23 @@ public class ProductController {
     public ResponseEntity saveProduct(@RequestBody ProductDTO dto) {
         productService.saveProduct(dto);
         return new ResponseEntity(new StandardResponse("201", "Done", dto), HttpStatus.CREATED);
+    }
+
+    @PostMapping(path = "/saveProductImage")
+    public ResponseEntity uploadCarImage(@RequestPart("file") MultipartFile multipartFile) {
+        System.out.println(multipartFile.getOriginalFilename());
+        try {
+            File uploadsDir = new File("D:/My Pro/b2bapp-frontEnd/b2bapp-FrontEND/img/product");
+            uploadsDir.mkdir();
+            multipartFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + multipartFile.getOriginalFilename()));
+        }  catch (IOException e) {
+            e.printStackTrace();
+        }
+        String filePath = multipartFile.getOriginalFilename();
+
+
+        StandardResponse standardResponse = new StandardResponse("200", "Success!", filePath);
+        return new ResponseEntity(standardResponse, HttpStatus.OK);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

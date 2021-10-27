@@ -4,6 +4,7 @@ import lk.nsbm.b2bappapi.dto.ProductDTO;
 import lk.nsbm.b2bappapi.entity.Product;
 import lk.nsbm.b2bappapi.exception.ValidateException;
 import lk.nsbm.b2bappapi.repo.ProductRepo;
+import lk.nsbm.b2bappapi.repo.UserRepo;
 import lk.nsbm.b2bappapi.service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -24,6 +25,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private UserRepo userRepo;
 
 
     @Override
@@ -65,5 +69,13 @@ public class ProductServiceImpl implements ProductService {
         else {
             throw new ValidateException("No Product for This id..!");
         }
+    }
+
+    @Override
+    public ArrayList<ProductDTO> getAllTopProducts() {
+        List<Product> all = productRepo.findAllTop();
+        
+        return modelMapper.map(all, new TypeToken<ArrayList<ProductDTO>>() {
+        }.getType());
     }
 }

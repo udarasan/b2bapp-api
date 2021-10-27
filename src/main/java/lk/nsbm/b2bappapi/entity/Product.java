@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
@@ -19,8 +16,6 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int PID;
     private String productName;
-    @NonNull
-    private String sellerID;
     private String productDetail;
     private String productQTy;
     private String onePiecePrice;
@@ -29,5 +24,11 @@ public class Product {
     private String productCategoryID;
     @NonNull
     private String productImage;
+
+    @ManyToOne
+    @JoinColumn(name = "userID",referencedColumnName = "userID")
+    private User sellerID;
+
+
 
 }

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("api/v1/product")
+@CrossOrigin
 public class ProductController {
 
     @Autowired
@@ -35,15 +36,13 @@ public class ProductController {
     public ResponseEntity uploadCarImage(@RequestPart("file") MultipartFile multipartFile) {
         System.out.println(multipartFile.getOriginalFilename());
         try {
-            File uploadsDir = new File("D:/My Pro/b2bapp-frontEnd/b2bapp-FrontEND/img/product");
+            File uploadsDir = new File("C:/Users/udara_a/Desktop/Personal/projects/b2bapp-FrontEnd/image/product");
             uploadsDir.mkdir();
             multipartFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + multipartFile.getOriginalFilename()));
         }  catch (IOException e) {
             e.printStackTrace();
         }
         String filePath = multipartFile.getOriginalFilename();
-
-
         StandardResponse standardResponse = new StandardResponse("200", "Success!", filePath);
         return new ResponseEntity(standardResponse, HttpStatus.OK);
     }
@@ -51,6 +50,12 @@ public class ProductController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllProducts() {
         ArrayList<ProductDTO> allProducts = productService.getAllProducts();
+        return new ResponseEntity(new StandardResponse("200", "Done", allProducts), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/getTopSix",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getAllTopProducts() {
+        ArrayList<ProductDTO> allProducts = productService.getAllTopProducts();
         return new ResponseEntity(new StandardResponse("200", "Done", allProducts), HttpStatus.OK);
     }
 

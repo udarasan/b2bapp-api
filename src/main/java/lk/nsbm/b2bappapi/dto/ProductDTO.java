@@ -1,5 +1,6 @@
 package lk.nsbm.b2bappapi.dto;
 
+import lk.nsbm.b2bappapi.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class ProductDTO {
     private int PID;
     private String productName;
-    private String sellerID;
+    private User sellerID;
     private String productDetail;
     private String productQTy;
     private String onePiecePrice;

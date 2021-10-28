@@ -17,4 +17,6 @@ public interface ProductService {
     void updateProduct(ProductDTO dto);
 
     ArrayList<ProductDTO> getAllTopProducts();
+
+    ArrayList<ProductDTO> getAllFilterProducts(String productName,String minPrice,String maxPrice,String productLocation);
 }

@@ -80,4 +80,10 @@ public class ProductController {
         return new ResponseEntity(new StandardResponse("200", "Done", dto), HttpStatus.OK);
     }
 
+    @GetMapping(path = "/getFilterProducts",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getAllFilterProducts(@RequestParam String productName, @RequestParam String minPrice,@RequestParam String maxPrice,@RequestParam String productLocation) {
+        ArrayList<ProductDTO> allProducts = productService.getAllFilterProducts(productName,minPrice,maxPrice,productLocation);
+        return new ResponseEntity(new StandardResponse("200", "Done", allProducts), HttpStatus.OK);
+    }
+
 }

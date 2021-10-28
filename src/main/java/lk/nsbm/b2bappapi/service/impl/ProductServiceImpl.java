@@ -78,4 +78,12 @@ public class ProductServiceImpl implements ProductService {
         return modelMapper.map(all, new TypeToken<ArrayList<ProductDTO>>() {
         }.getType());
     }
+
+    @Override
+    public ArrayList<ProductDTO> getAllFilterProducts(String productName,String minPrice,String maxPrice,String productLocation) {
+        List<Product> all = productRepo.findAllFilterProducts(productName,minPrice,maxPrice,productLocation);
+
+        return modelMapper.map(all, new TypeToken<ArrayList<ProductDTO>>() {
+        }.getType());
+    }
 }

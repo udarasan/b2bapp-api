@@ -19,4 +19,6 @@ public interface ProductService {
     ArrayList<ProductDTO> getAllTopProducts();
 
     ArrayList<ProductDTO> getAllFilterProducts(String productName,String minPrice,String maxPrice,String productLocation);
+
+    ArrayList<ProductDTO> getProductsByUserID(String userID);
 }

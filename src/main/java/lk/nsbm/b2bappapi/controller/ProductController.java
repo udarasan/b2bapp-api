@@ -36,7 +36,7 @@ public class ProductController {
     public ResponseEntity uploadCarImage(@RequestPart("file") MultipartFile multipartFile) {
         System.out.println(multipartFile.getOriginalFilename());
         try {
-            File uploadsDir = new File("C:/Users/udara_a/Desktop/Personal/projects/b2bapp-FrontEnd/image/product");
+            File uploadsDir = new File("D:/My Pro/b2bapp-frontEnd/b2bapp-FrontEND/image/product");
             uploadsDir.mkdir();
             multipartFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + multipartFile.getOriginalFilename()));
         }  catch (IOException e) {
@@ -59,7 +59,12 @@ public class ProductController {
         return new ResponseEntity(new StandardResponse("200", "Done", allProducts), HttpStatus.OK);
     }
 
-
+    @GetMapping(path = "/getProductsByUserID/{userID}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getProductsByUserID(@PathVariable String userID) {
+        System.out.println("ok");
+        ArrayList<ProductDTO> allProductsByUserId = productService.getProductsByUserID(userID);
+        return new ResponseEntity(new StandardResponse("200", "Done", allProductsByUserId), HttpStatus.OK);
+    }
 
     @GetMapping(path = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity searchProduct(@PathVariable String name) {

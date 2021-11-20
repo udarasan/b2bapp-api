@@ -13,9 +13,9 @@ public class ProductDTO {
     private String productName;
     private User sellerID;
     private String productDetail;
-    private String productQTy;
-    private String onePiecePrice;
-    private String totalPrice;
+    private int productQTy;
+    private int onePiecePrice;
+    private int totalPrice;
     private String productLocation;
     private String productCategoryID;
     private String productImage;

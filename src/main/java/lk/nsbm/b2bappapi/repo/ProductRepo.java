@@ -15,8 +15,9 @@ public interface ProductRepo extends JpaRepository<Product,Integer> {
     List<Product>findAllTop();
 
 
-    @Query(value = "SELECT * FROM product where product_name LIKE %?1% and total_price >= ?2 and total_price <= ?3 and product_location = ?4", nativeQuery = true)
-    List<Product> findAllFilterProducts(String productName, String minPrice, String maxPrice, String productLocation);
+    @Query(value = "SELECT * FROM product where product_name LIKE %?1% and (total_price between ?2 and ?3) and product_location = ?4 and (productqty >=?5 and productqty<=?6)", nativeQuery = true)
+    List<Product> findAllFilterProducts(String productName, Integer minPrice, Integer maxPrice, String productLocation,Integer minQTY,Integer maxQTY);
+    //total_price >= ?2 and total_price <= ?3
     //SELECT * FROM product where product_name LIKE'%E Metter%' and total_price>='1000' and total_price<='1000' and product_location='Colombo';
     @Query(value = "SELECT * FROM product where userid  = ?1", nativeQuery = true)
     List<Product>findAllBySellerID(String userID);

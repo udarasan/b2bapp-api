@@ -18,7 +18,8 @@ public interface ProductService {
 
     ArrayList<ProductDTO> getAllTopProducts();
 
-    ArrayList<ProductDTO> getAllFilterProducts(String productName,String minPrice,String maxPrice,String productLocation);
+    ArrayList<ProductDTO> getAllFilterProducts(String productName,Integer minPrice,Integer maxPrice,String productLocation
+            ,Integer minQTY,Integer maxQTY);
 
     ArrayList<ProductDTO> getProductsByUserID(String userID);
 }

@@ -86,8 +86,11 @@ public class ProductController {
     }
 
     @GetMapping(path = "/getFilterProducts",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getAllFilterProducts(@RequestParam String productName, @RequestParam String minPrice,@RequestParam String maxPrice,@RequestParam String productLocation) {
-        ArrayList<ProductDTO> allProducts = productService.getAllFilterProducts(productName,minPrice,maxPrice,productLocation);
+    public ResponseEntity getAllFilterProducts(@RequestParam String productName, @RequestParam Integer minPrice,
+                                               @RequestParam Integer maxPrice,@RequestParam String productLocation,
+                                               @RequestParam Integer minQTY,@RequestParam Integer maxQTY) {
+        System.out.println(productName+"|"+minPrice+"|"+maxPrice+"|"+productLocation+"|"+minQTY+"|"+maxQTY);
+        ArrayList<ProductDTO> allProducts = productService.getAllFilterProducts(productName,minPrice,maxPrice,productLocation,minQTY,maxQTY);
         return new ResponseEntity(new StandardResponse("200", "Done", allProducts), HttpStatus.OK);
     }
 

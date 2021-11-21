@@ -107,4 +107,11 @@ public class UserServiceImpl implements UserService {
 
 
     }
+
+    @Override
+    public ArrayList<UserDTO> getAllShops(String userType) {
+        List<User> all = userRepo.findAllByUserType(userType);
+        return mapper.map(all, new TypeToken<ArrayList<UserDTO>>() {
+        }.getType());
+    }
 }

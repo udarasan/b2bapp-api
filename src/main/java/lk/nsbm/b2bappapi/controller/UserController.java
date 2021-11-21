@@ -68,4 +68,10 @@ public class UserController {
 
 
     }
+
+    @GetMapping(path = ("/getAllShops"),produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getAllShops(@RequestParam String userType) {
+        ArrayList<UserDTO> allShops= userService.getAllShops(userType);
+        return new ResponseEntity(new StandardResponse("200", "Done", allShops), HttpStatus.OK);
+    }
 }

@@ -22,4 +22,6 @@ public interface ProductService {
             ,Integer minQTY,Integer maxQTY);
 
     ArrayList<ProductDTO> getProductsByUserID(String userID);
+
+    ArrayList<ProductDTO> getAllProductByCategory(String category);
 }

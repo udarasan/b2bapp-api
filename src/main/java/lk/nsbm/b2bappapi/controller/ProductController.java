@@ -94,4 +94,10 @@ public class ProductController {
         return new ResponseEntity(new StandardResponse("200", "Done", allProducts), HttpStatus.OK);
     }
 
+    @GetMapping(path = "/getAllProductByCategory",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getAllProductByCategory(@RequestParam String category) {
+        ArrayList<ProductDTO> allProducts = productService.getAllProductByCategory(category);
+        return new ResponseEntity(new StandardResponse("200", "Done", allProducts), HttpStatus.OK);
+    }
+
 }

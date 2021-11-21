@@ -21,4 +21,7 @@ public interface ProductRepo extends JpaRepository<Product,Integer> {
     //SELECT * FROM product where product_name LIKE'%E Metter%' and total_price>='1000' and total_price<='1000' and product_location='Colombo';
     @Query(value = "SELECT * FROM product where userid  = ?1", nativeQuery = true)
     List<Product>findAllBySellerID(String userID);
+
+    @Query(value = "SELECT * FROM product where product_categoryid  = ?1", nativeQuery = true)
+    List<Product> findAllByCategory(String category);
 }

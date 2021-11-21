@@ -23,4 +23,6 @@ public interface UserService {
     int getAvailableEmployeeCount();
 
     void updatePassword(String Email,String password);
+
+    ArrayList<UserDTO> getAllShops(String userType);
 }

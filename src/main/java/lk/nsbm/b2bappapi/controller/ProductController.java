@@ -52,6 +52,11 @@ public class ProductController {
         ArrayList<ProductDTO> allProducts = productService.getAllProducts();
         return new ResponseEntity(new StandardResponse("200", "Done", allProducts), HttpStatus.OK);
     }
+    @GetMapping(path = "/desc",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getAllProductsDesc() {
+        ArrayList<ProductDTO> allProducts = productService.getAllProductsDesc();
+        return new ResponseEntity(new StandardResponse("200", "Done", allProducts), HttpStatus.OK);
+    }
 
     @GetMapping(path = "/getTopSix",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllTopProducts() {

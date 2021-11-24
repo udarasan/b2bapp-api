@@ -24,4 +24,6 @@ public interface ProductService {
     ArrayList<ProductDTO> getProductsByUserID(String userID);
 
     ArrayList<ProductDTO> getAllProductByCategory(String category);
+
+    ArrayList<ProductDTO> getAllProductsDesc();
 }

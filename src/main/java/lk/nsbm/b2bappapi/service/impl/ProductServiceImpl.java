@@ -9,6 +9,7 @@ import lk.nsbm.b2bappapi.service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -99,6 +100,14 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ArrayList<ProductDTO> getAllProductByCategory(String category) {
         List<Product> all = productRepo.findAllByCategory(category);
+        return modelMapper.map(all, new TypeToken<ArrayList<ProductDTO>>() {
+        }.getType());
+    }
+
+    @Override
+    public ArrayList<ProductDTO> getAllProductsDesc() {
+        List<Product> all = productRepo.findAllByPc();
+
         return modelMapper.map(all, new TypeToken<ArrayList<ProductDTO>>() {
         }.getType());
     }

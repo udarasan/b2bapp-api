@@ -27,9 +27,6 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Autowired
-    private UserRepo userRepo;
-
 
     @Override
     public void saveProduct(ProductDTO dto) {
